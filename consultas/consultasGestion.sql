@@ -1,0 +1,67 @@
+--1
+SELECT codfac,fecha,nvl(dto*2,0) AS doble 
+FROM facturas;
+--2
+SELECT codfac FROM facturas WHERE IVA IS NULL;
+--3
+SELECT codfac,fecha FROM facturas WHERE iva IS NULL OR iva=0;
+--4
+SELECT CODFAC, CODART FROM LINEAS_FAC lf 
+WHERE CANT < 5 AND DTO >=25;
+--5
+SELECT descrip,STOCK_MIN  - STOCK AS unidades_faltan FROM ARTICULOS a 
+WHERE stock<STOCK_MIN ;
+--6
+SELECT DISTINCT nvl(iva,0) FROM facturas;
+--7
+SELECT CODART , DESCRIP , STOCK_MIN FROM ARTICULOS a
+WHERE STOCK IS NULL;
+--8
+SELECT descrip FROM ARTICULOS a
+WHERE stock > (STOCK_MIN*3) AND PRECIO >6;
+--9
+SELECT DISTINCT CODART FROM LINEAS_FAC lf
+WHERE CODFAC BETWEEN 8 AND 10;
+--10
+SELECT NOMBRE,DIRECCION FROM clientes;
+--11
+SELECT distinct codpue FROM CLIENTES c;
+--12
+SELECT DISTINCT codpue FROM CLIENTES c 
+WHERE CODCLI <25;
+--13 para poner un caracter delante se usa el guión bajo "_"
+SELECT NOMBRE FROM PROVINCIAS p 
+WHERE upper(NOMBRE) LIKE '_O%';
+--14
+SELECT CODFAC,FECHA FROM FACTURAS f
+WHERE fecha=sysdate-(365) AND CODCLI BETWEEN 50 AND 100;
+--15
+SELECT NOMBRE, DIRECCION FROM CLIENTES c
+WHERE CODCLI LIKE '12%';
+--16
+SELECT DISTINCT fecha FROM FACTURAS f 
+WHERE CODCLI <50;
+--17
+SELECT codfac, fecha FROM facturas 
+WHERE extract(MONTH FROM fecha)=6 AND extract(YEAR FROM fecha) =2004;
+--18
+SELECT codfac, fecha FROM facturas 
+WHERE extract(MONTH FROM fecha)=6 AND extract(YEAR FROM fecha) =2004
+AND codcli BETWEEN 100 AND 250;
+--19
+SELECT codfac,fecha FROM facturas 
+WHERE CODCLI BETWEEN 90 AND 100 AND iva IS NULL;
+--20
+SELECT nombre FROM provincias 
+WHERE upper(nombre) LIKE '%S';
+--21
+SELECT nombre FROM clientes 
+WHERE CODPOSTAL LIKE '02%' OR CODPOSTAL LIKE '11%' OR CODPOSTAL LIKE '21%'; 
+--22
+SELECT * FROM ARTICULOS a 
+WHERE STOCK >STOCK_MIN AND (STOCK-STOCK_MIN)>=5;
+--23
+SELECT nombre FROM provincias WHERE upper(nombre) LIKE '%MA%';
+--24
+SELECT codart,DESCRIP,PRECIO,PRECIO-(precio*0.1) AS precio_promocion FROM articulos
+WHERE PRECIO >6000 AND stock >60000;
