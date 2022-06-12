@@ -1,3 +1,3 @@
 alter session set "_oracle_script"=true;  
-create user peces identified by peces;
-GRANT CONNECT, RESOURCE, DBA TO peces;
+create user examen identified by examen;
+GRANT CONNECT, RESOURCE, DBA TO examen;

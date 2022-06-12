@@ -85,10 +85,12 @@ END;
 DECLARE
  num NUMBER(3) := 0;
 BEGIN
- LOOP
- DBMS_OUTPUT.PUT_LINE (num);
- IF num > 100 THEN EXIT; END IF;
- num:= num+2;
+	 LOOP
+	 DBMS_OUTPUT.PUT_LINE (num);
+	 IF num > 100 THEN 
+		EXIT; 
+	 END IF;
+	 num:= num+2;
  END LOOP;
 END;
 
